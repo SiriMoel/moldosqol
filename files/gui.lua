@@ -1,7 +1,9 @@
 dofile_once("mods/moldosqol/files/utils.lua")
 
 local gusgui = dofile_once("mods/moldosqol/lib/gusgui/Gui.lua")
-local Gui = gusgui.Create()
+local Gui = gusgui.Create({
+    enableLogging = true
+})
 
 Gui.state.MQOLmenuopen = true; -- default closed
 
@@ -33,7 +35,7 @@ Gui:AddElement(gusgui.Elements.VLayout({
     overrideZ  = 100000000,
     hidden = false,
     children = {
-        gusgui.Elements.Button({
+        gusgui.Elements.ImageButton({
             id = "button",
             margin = { top = 1, left = 1, },
             overrideZ  = 100000000,
@@ -48,6 +50,8 @@ Gui:AddElement(gusgui.Elements.VLayout({
 
 Gui:AddElement(gusgui.Elements.VLayout({
     id = "moldosqol",
+    overrideWidth = Gui:ScreenWidth(),
+    overrideHeight = Gui:ScreenHeight(),
     horizontalAlign = 0.5,
     verticalAlign = 0.5,
     overrideZ  = 100000000,
@@ -60,7 +64,7 @@ Gui:AddElement(gusgui.Elements.VLayout({
             hidden = false,
             padding = 5,
             children = {
-                gusgui.Elements.text({
+                gusgui.Elements.Text({
                     id = "test",
                     value = "hi",
                     hidden = false,
